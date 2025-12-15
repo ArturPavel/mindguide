@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindGuide</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/c28df9727f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <div class="sidebar"> 
+      <div class="sidebar-header">
+        <img 
+          src="../resources/logo.png" 
+          alt="MindGuide Logo" 
+          class="logo">
+        <h1>MindGuide</h1>
+        <p class="subheading">by&nbsp;<span class="erdve-purple-text" style="display: block;">Erdvė Visiems</span>&nbsp;team <img src="../resources/erdve_visiems_logo.png" alt="Erdvė Visiems logo" class="erdve-badge" /></p>
+      </div>
+      
+      <div class="mode-list" id="mode-button-container">
+        <button class="mode-button" data-mode="therapy">
+          <div class="mode-button-content">
+            <span class="mode-icon">
+              <i class="fa-solid fa-users"></i>
+            </span>
+            <div class="mode-info">
+              <div class="mode-name">Therapy</div>
+              <div class="mode-desc">Mental health support</div>
+            </div>
+          </div>
+        </button>
+        
+        <button class="mode-button" data-mode="uplift">
+          <div class="mode-button-content">
+            <span class="mode-icon">
+              <i class="fa-solid fa-sun"></i>
+            </span>
+            <div class="mode-info">
+              <div class="mode-name">Uplift</div>
+              <div class="mode-desc">Depression-focused guidance</div>
+              <span class="custom-tag">
+                <i class="fa-solid fa-gear"></i>&nbsp;Custom</span>
+            </div>
+          </div>
+        </button>
+        
+        <button class="mode-button" data-mode="balance">
+          <div class="mode-button-content">
+            <span class="mode-icon">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </span>
+            <div class="mode-info">
+              <div class="mode-name">Balance</div>
+              <div class="mode-desc">Anxiety regulation aid</div>
+              <span class="custom-tag">
+                <i class="fa-solid fa-gear"></i>&nbsp;Custom</span>
+            </div>
+          </div>
+        </button>
+
+        <button class="mode-button" data-mode="custom" id="custom-mode-button">
+          <div class="mode-button-content">
+            <span class="mode-icon">
+              <i class="fa-solid fa-circle-plus"></i>
+            </span>
+            <div class="mode-info">
+              <div class="mode-name">Create new</div>
+              <div class="mode-desc">Create your own consultation mode</div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Empty State (Initial View) -->
+      <div id="empty-state" class="empty-state">
+        <img 
+          src="https://storage.googleapis.com/hostinger-horizons-assets-prod/b55b2c90-d445-4267-9fe2-8d36f12d7f91/f85a25b029d557e351294799ae6dc279.png" 
+          alt="MindGuide Logo" 
+          class="logo-large">
+        <h2>Select a Mode</h2>
+        <p>Choose from the sidebar to begin</p>
+      </div>
+
+      <!-- Mode Content (After Selection) -->
+      <div id="mode-content" class="mode-content hidden">
+        <div class="mode-header">
+          <div class="mode-title">
+            <span id="selected-mode-icon" class="mode-icon"></span>
+            <h2 id="selected-mode-name"></h2>
+            <span id="custom-mode-badge" class="custom-tag hidden">
+              <i class="fa-solid fa-gear"></i>&nbsp; Custom</span>
+          </div>
+          
+          <div class="record-controls">
+            <button id="record-btn" class="record-btn">
+              <span class="record-icon"></span>
+              <span class="record-text">Start Recording</span>
+            </button>
+          </div>
+
+          <div class="custom-mode-controls">
+            <button id="add-custom-mode-btn" class="record-btn">
+              <i class="fa-solid fa-plus fa-lg" style="color: #ffffff;"></i>
+              <span class="record-text">Add New</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="window-select-div">
+          <select name="windowSelectMenu" id="window-select-menu">
+            <option value="">Please select the meeting window</option>
+          </select>
+        </div>
+
+        <div id="custom-name" class="custom-input hidden">
+          <h3>Name of the consultation:</h3>
+          <input type="text" id="custom-name-input" placeholder="Enter here...">
+        </div>
+
+        <div id="custom-input" class="custom-input hidden">
+          <h3>Prompt to guide the analysis:</h3>
+          <input type="text" id="custom-prompt-input" placeholder="Enter here...">
+        </div>
+
+        <div class="mode-details">
+          <div class="mode-description">
+            <h3>Mode Description</h3>
+            <p id="mode-description-text"></p>
+          </div>
+          
+          <div class="strengths" id="strengths-container">
+            <h3>Key Strengths</h3>
+            <div id="strengths-grid" class="strengths-grid"></div>
+          </div>
+        </div>
+
+        <div id="recording-status" class="recording-status hidden">
+          <div class="pulse"></div>
+          <span>Recording in progress...</span>
+        </div>
+      </div>
+
+      <!--Analysis (after fkn analysis) -->
+      <div id="mode-content-analysis" class="mode-content hidden">
+        <div class="mode-header">
+          <div class="mode-title">
+            <span id="selected-mode-icon-analysis" class="mode-icon"></span>
+            <h2>Suggestions and Insights</h2>
+          </div>
+        </div>
+
+        <div class="mode-details">
+          <div class="mode-description" id="analysis-body">
+            <h3>Mode Description</h3>
+            <ul>
+              <li>Watashi no na wa</li>
+              <li>Kira Yoshikage</li>
+              <li>Nenrei sanju-san sai</li>
+            </ul>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- Analysis Modal -->
+  <div id="analysis-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Analysis Results</h2>
+        <button id="close-modal-btn" class="close-btn">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="analysis-main">
+          <div class="analysis-item">
+            <span class="analysis-icon">
+              <i class="fa-solid fa-exclamation"></i>
+            </span>
+            <div>
+              <h3>Detected Emotion</h3>
+              <p id="emotion-result"></p>
+            </div>
+          </div>
+          
+          <div class="analysis-item">
+            <span class="analysis-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            <div>
+              <h3>Recommendation</h3>
+              <p id="recommendation-result"></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="analysis-lists">
+          <div class="list-section">
+            <h3>Suggested Questions</h3>
+            <ul id="questions-list"></ul>
+          </div>
+          
+          <div class="list-section">
+            <h3>Follow-up Points</h3>
+            <ul id="followup-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toast-message"></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

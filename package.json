@@ -1,0 +1,29 @@
+{
+  "name": "10k",
+  "version": "1.0.0",
+  "main": "Window/main.js",
+  "scripts": {
+    "build": "npm install && pip install -r requirements.txt && npx mkdirp Window/temp && npx mkdirp AI/script_dependencies && echo Build completed.",
+    "start": "electron .",
+    "test": "\\"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DariusPipin/10K.git"
+  },
+  "author": "Joe mama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DariusPipin/10K/issues"
+  },
+  "homepage": "https://github.com/DariusPipin/10K#readme",
+  "description": "",
+  "devDependencies": {
+    "electron": "^35.0.1",
+    "mkdirp": "^3.0.1"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "fluent-ffmpeg": "^2.1.3"
+  }
+}

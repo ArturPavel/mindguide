@@ -1,0 +1,532 @@
+:root {
+  --primary: #a284da;
+  --primary-hover: #937cbe;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --background: #f3f4f6;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.erdve-purple-text {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background: var(--card);
+  padding: 1.5rem;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-header {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.subheading {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+}
+
+.sidebar-header h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-header p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* Mode List & Buttons */
+.mode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mode-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  position: relative;
+}
+
+.mode-button:hover {
+  background: var(--background);
+  transform: translateY(-1px);
+}
+
+.mode-button.active {
+  background: #e8dcff;
+}
+
+.mode-button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+.mode-icon {
+  font-size: 1.25rem;
+  color: var(--primary);
+  /* or for logo collor #273A44*/
+}
+
+.fa-solid {
+  color: #273A44;
+}
+
+.mode-info {
+  flex: 1;
+}
+
+.mode-name {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.mode-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.custom-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background: #e8dcff;
+  color: var(--primary);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+#custom-mode-button {
+  position: absolute;
+  bottom: 1rem;
+  width: 14.7rem;
+  background: #e9eff7;
+}
+
+#custom-mode-button:hover {
+  background: #e8dcff;
+  transform: translateY(-1px);
+}
+
+#custom-mode-button.active {
+  background: #e1d0ff;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.logo-large {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+/* Mode Content */
+.mode-content {
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px #0000001a;
+  margin-bottom: 2.5rem;
+}
+
+.mode-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.1rem;
+}
+
+.mode-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mode-title h2 {
+  font-size: 1.5rem;
+}
+
+#analysis-body ul{
+  list-style-position: inside;
+}
+
+#analysis-body h3{
+  margin-bottom: 0.5rem;
+}
+
+/* Style the select wrapper */
+.window-select-div {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
+}
+
+/* Style the select dropdown */
+#window-select-menu {
+  width: 70vw;
+  max-width: inherit; /* Adjust width as needed */
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #d1d5db; /* Light gray border */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  appearance: none; /* Remove default arrow */
+  outline: none;
+}
+
+/* Add custom dropdown arrow */
+#window-select-menu {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='black'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+/* Hover and Focus Effects */
+#window-select-menu:hover,
+#window-select-menu:focus {
+  border-color: #79669c; /* Blue accent */
+  box-shadow: 0 0 5px #79669c;
+}
+
+/* Style the dropdown options */
+#window-select-menu option {
+  font-size: 14px;
+  padding: 10px;
+}
+
+
+/* Record Button Styles */
+
+.record-controls{
+  position: inherit;
+}
+
+.custom-mode-controls{
+  position: inherit;
+}
+
+.hidden.record-controls, .hidden.custom-mode-controls{
+  display: none;
+}
+
+.record-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.record-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.record-btn.recording {
+  background: var(--danger);
+}
+
+.record-btn.recording:hover {
+  background: var(--danger-hover);
+}
+
+.record-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+}
+
+.record-btn.recording .record-icon {
+  animation: pulse 1.5s infinite;
+}
+
+/* Recording Status */
+.recording-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: var(--danger);
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  background: var(--danger);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+/* Custom Input Styles */
+.custom-input {
+  margin-bottom: 2rem;
+}
+
+.custom-input input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.custom-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Strengths Grid */
+.strengths {
+  margin-top: 2rem;
+}
+
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.strength-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--background);
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.strength-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.visible {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--card);
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Analysis Results */
+.analysis-main {
+  background: #dbeafe;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.analysis-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.analysis-icon {
+  font-size: 1
+}
+
+.analysis-lists {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.list-section ul {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.list-section li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.list-section li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* Toast Styles */
+.toast {
+  visibility: hidden;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--card);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s, visibility 0s linear 0.3s;
+}
+
+.toast.visible {
+  visibility: visible;
+  transform: translateY(0);
+  transition: transform 0.3s, visibility 0s;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .mode-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .record-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
